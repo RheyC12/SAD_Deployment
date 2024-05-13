@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags and title -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SK Bolacan Digital Platform</title>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="main.css" />
+
+  <link rel="shortcut icon" type="sklogo" href="Logo.png">
+  <!-- Unicons CSS -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+   
+  
+  <!-- Swiper CSS -->
+   <link rel="stylesheet" href="swiper-bundle.min.css">
+  
+  <!-- Script -->
+  <script src="script.js" defer></script>
+
+  <!-- Swiper JS -->
+  <script src="swiper-bundle.min.js"></script>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-storage.js"></script>
+</head>
+<body>
+
+<nav class="nav">
+  <!-- Navigation buttons -->
+  <i class="uil uil-bars navOpenBtn"></i>
+  <!-- Image logo -->
+  <a href="#" class="logo">
+    <img src="Logo.png" alt="Logo"> 
+    SK Digital Platform 
+  </a>
+  <!-- Navigation links -->
+  <ul class="nav-links">
+    <i class="uil uil-times navCloseBtn"></i>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#youth-report">Youth Report</a></li>
+    <li><a href="#portfolio">Portfolios</a></li>
+    <li><a href="Progtrack.html">Progress Tracking</a></li>
+    <li><a href="announcements.html">Announcements</a></li>
+  </ul>
+  <!-- Search icon and box -->
+  <i class="uil uil-search search-icon" id="searchIcon"></i>
+  <div class="search-box">
+    <i class="uil uil-search search-icon"></i>
+    <input type="text" id="searchInput" placeholder="Search here..." />
+  </div>
+</nav>
+
+<!-- Content for Welcomepage -->
+<section class="homepage" id="home">
+  <!-- New Home Content -->
+  <div class="home-content">
+    <div class="home-container">
+      <div class="home-left-side">
+        <div class="container">
+          <h2 class="header-title">Featured Program</h2>
+          <div class="card1" id="featuredProgram">
+            <!-- Featured Program will be dynamically populated here -->
+          </div>
+        </div>
+      </div>
+      <div class="home-right-side">
+        <div class="container">
+          <h2 class="header-title-right">Recent Events</h2>
+          <ul class="card2" id="recentEvents">
+            <!-- Other programs will be dynamically populated here -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- JavaScript -->
+<script src="main.js" defer></script>
+<!-- Swiper JS -->
+<script src="swiper-bundle.min.js"></script>
+</body>
+</html>
+
+
+<!--HOME CONTENT-->
+
+
+
+
+<!-- Programs Content -->
+<section class="programs" id="programs">
+  <h2>Our Programs</h2>
+  <p>Experience a variety of impactful initiatives aimed at enhancing communities and fostering growth.</p>
+  <ul class="cards_prog" id="programCards">
+    <!-- Program cards will be dynamically added here -->
+  </ul>
+</section>
+
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-database.js"></script>
+<script>
+  // Initialize Firebase
+  const firebaseConfig = {
+            apiKey: "AIzaSyCZP6ZL856lPO2cfu65dY4NUYt3dxrBjcU",
+            authDomain: "sadresearch-ef6a0.firebaseapp.com",
+            databaseURL: "https://sadresearch-ef6a0-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "sadresearch-ef6a0",
+            storageBucket: "sadresearch-ef6a0.appspot.com",
+            messagingSenderId: "855295287598",
+            appId: "1:855295287598:web:e773796d57dc1bd3809abf",
+            measurementId: "G-K6D7DW9JZ3"
+        };
+
+  firebase.initializeApp(firebaseConfig);
+
+  // Reference to the programs in Firebase Realtime Database
+  const programsRef = firebase.database().ref('programs');
+
+  // Function to generate HTML for program cards
+  // Function to generate HTML for program cards
+function generateProgramCard(id, title, description, imageUrl) {
+  const card = document.createElement('li');
+  card.classList.add('card');
+
+  const link = document.createElement('a');
+
+  // Determine the href based on the program title
+  let href;
+  if (title === "Community") {
+    href = `/Community/community_details.html?id=${id}`;
+  } else if (title === "Project Scholar") {
+    href = `/Program_Details/program_details.html?id=${id}`;
+  } else if (title === "Health") {
+    href = `/Health/health_details.html?id=${id}`;
+  } else if (title === "Education") {
+    href = `/Education/education_details.html?id=${id}`;
+  } else if (title === "Sports") {
+    href = `/Sports/sports_details.html?id=${id}`;
+  } else if (title === "School Supplies") {
+    href = `/School_Supplies/school_supplies_details.html?id=${id}`;
+  } else {
+    // Default fallback link
+    href = `/Program_Details/program_details.html?id=${id}`;
+  }
+
+  link.href = href;
+
+  const img = document.createElement('img');
+  img.src = imageUrl;
+  img.alt = title;
+
+  const heading = document.createElement('h3');
+  heading.textContent = title;
+
+  const desc = document.createElement('p');
+  desc.textContent = description;
+
+  link.appendChild(img);
+  link.appendChild(heading);
+  link.appendChild(desc);
+
+  card.appendChild(link);
+
+  return card;
+}
+
+
+  // Function to load programs from Firebase and add to the viewer's page
+  function loadPrograms() {
+    programsRef.once('value', snapshot => {
+      const programCards = document.getElementById('programCards');
+      programCards.innerHTML = ''; // Clear existing program cards
+
+      snapshot.forEach(childSnapshot => {
+        const programData = childSnapshot.val();
+        const { id, title, description, imageUrl } = programData;
+
+        const card = generateProgramCard(id, title, description, imageUrl);
+        programCards.appendChild(card);
+      });
+    });
+  }
+
+  // Load programs when the page loads
+  window.addEventListener('load', loadPrograms);
+</script>
+
+
+<!-- Youth Report Content -->
+<section class="youth-report" id="youth-report">
+  <h2>Youth Report</h2>
+  <div class="container">
+    
+    <!-- Embed sample.html using an iframe -->
+    <iframe src="yrSlider.html" width="1000" height="500" frameborder="0" style="border:none;"></iframe>
+    
+    <!-- View More Info button -->
+    <a href="yr2.html" class="button view-more-info">View More Info &rarr;</a>
+  </div>
+</section>
+
+
+
+<!-- Portfolio Section -->
+<section class="portfolio" id="portfolio">
+  <h2>Portfolios</h2>
+  <p class="Port"> This is the portfolio section where you can see the profile of SK Officials. It provides a brief summary of their skills and accomplishments here.</p>
+</section>
+
+<div class="slide-container swiper">
+  <div class="slide-content">
+      <div class="card-wrapper swiper-wrapper">
+          <div class="card swiper-slide">
+              <div class="image-content">
+                  <span class="overlay"></span>
+                  <div class="card-image">
+                      <img src="Sk/chair.png" alt="" class="card-img">
+                  </div>
+              </div>
+
+              <div class="card-content">
+                <h2 class="name">SK Paola Caryl Ponon</h2>
+                <p class="description">The SK Chairperson, a proactive young leader focused on organizing community programs and empowering youth in meaningful ways.</p>
+                <a href="CRED/sk_chair_cred.html" class="button b">View More</a>
+            </div>
+        </div>
+
+        <div class="card swiper-slide">
+          <div class="image-content">
+              <span class="overlay"></span>
+              <div class="card-image">
+                  <img src="Sk/trish.jpg" alt="" class="card-img">
+              </div>
+          </div>
+          <div class="card-content">
+              <h2 class="name"> SK Trish Nicole Pinoy</h2>
+              <p class="description">
+                This female SK Councilor is a passionate advocate for youth, working hard to create opportunities and programs that benefit the local community </p>
+                <a href="CRED/sk_trish_cred.html" class="button b">View More</a>
+          </div>
+      </div>
+      
+      <div class="card swiper-slide">
+        <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+                <img src="Sk/val.jpg" alt="" class="card-img">
+            </div>
+        </div>
+        <div class="card-content">
+            <h2 class="name">SK Michael Val Torres</h2>
+            <p class="description">The SK Counsilor actively supports youth programs and works to improve the community through innovative initiatives and hands-on involvement.</p>
+            <a href="CRED/sk_val_cred.html" class="button b">View More</a>
+        </div>
+    </div>
+    <div class="card swiper-slide">
+        <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+                <img src="Sk/jj.jpg" alt="" class="card-img">
+            </div>
+        </div>
+        <div class="card-content">
+            <h2 class="name">SK Jasper Joel Joson</h2>
+            <p class="description">The SK Councilor, known for his vibrant leadership, actively supports youth initiatives and spearheads innovative projects for community betterment.</p>
+            <a href="CRED/sk_jj_cred.html" class="button b">View More</a>
+        </div>
+    </div>
+    <div class="card swiper-slide">
+        <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+                <img src="Sk/ej.jpg" alt="" class="card-img">
+            </div>
+        </div>
+        <div class="card-content">
+            <h2 class="name">SK EJ Dizon</h2>
+            <p class="description">A proactive figure in the SK Council, he dedicates himself to fostering the growth of young people and implementing transformative projects for community advancement.</p>
+            <a href="CRED/sk_ej_cred.html" class="button b">View More</a>
+        </div>
+    </div>
+    <div class="card swiper-slide">
+        <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+                <img src="Sk/cla.jpg" alt="" class="card-img">
+            </div>
+        </div>
+        <div class="card-content">
+            <h2 class="name">SK Clarisse Aldea</h2>
+            <p class="description">This SK Councilor is deeply committed to supporting the development of young individuals and implementing creative endeavors to enhance community well-being.</p>
+            <a href="CRED/sk_cla_cred.html" class="button b">View More</a>
+        </div>
+    </div>
+    <div class="card swiper-slide">
+        <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+                <img src="Sk/chester.jpg" alt="" class="card-img">
+            </div>
+        </div>
+        <div class="card-content">
+            <h2 class="name">SK Chester Aldouz San Pedro</h2>
+            <p class="description">Recognized for his energetic approach, this SK Councilor is instrumental in driving initiatives that uplift the next generation and enhance community life.</p>
+            <a href="CRED/sk_ches_cred.html" class="button b">View More</a>
+        </div>
+    </div>
+    <div class="card swiper-slide">
+        <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+                <img src="Sk/man.png" alt="" class="card-img">
+            </div>
+        </div>
+        <div class="card-content">
+            <h2 class="name">SK Manuelito Delos Santos</h2>
+            <p class="description">As an influential member of the SK Council, he tirelessly works to uplift the community through initiatives that empower young minds and foster positive change.</p>
+            <a href="CRED/sk_man_cred.html" class="button b">View More</a>
+        </div>
+    </div>
+    <div class="card swiper-slide">
+        <div class="image-content">
+            <span class="overlay"></span>
+            <div class="card-image">
+                <img src="Sk/tin.jpg" alt="" class="card-img">
+            </div>
+        </div>
+        <div class="card-content">
+            <h2 class="name">SK Sec Christine Lazaro</h2>
+            <p class="description">With a focus on youth engagement, this SK Secretary actively promotes programs that empower young people and uplift the community through innovative endeavors.</p>
+            <a href="CRED/sk_sec_cred.html" class="button b">View More</a>
+        </div>
+    </div>
+
+    <div class="card swiper-slide">
+      <div class="image-content">
+          <span class="overlay"></span>
+          <div class="card-image">
+              <img src="Sk/daisy.jpg" alt="" class="card-img">
+          </div>
+      </div>
+      <div class="card-content">
+          <h2 class="name">SK Treasurer Daisy Gelua</h2>
+          <p class="description">With a passion for community development, this SK Treasurer champions various youth empowerment initiatives and drives impactful projects in the locality.</p>
+          <a href="CRED/sk_treas_cred.html" class="button b">View More</a>
+      </div>
+  </div>
+</div>
+</div>
+<div class="swiper-button-next swiper-navBtn"></div>
+<div class="swiper-button-prev swiper-navBtn"></div>
+<div class="swiper-pagination"></div>
+</div>
+
+<!-- Progress Tracking -->
+
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="announcements.css" />
+    <title>Announcement</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #ffffff;
+            z-index: 999;
+        }
+
+        .section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: none;
+        }
+
+        .section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="back-btn" onclick="window.history.back()">✖</div>
+    </header>
+
+    <div id="imageContainer"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-storage.js"></script>
+    <script>
+        // Your Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyCZP6ZL856lPO2cfu65dY4NUYt3dxrBjcU",
+            authDomain: "sadresearch-ef6a0.firebaseapp.com",
+            databaseURL: "https://sadresearch-ef6a0-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "sadresearch-ef6a0",
+            storageBucket: "sadresearch-ef6a0.appspot.com",
+            messagingSenderId: "855295287598",
+            appId: "1:855295287598:web:e773796d57dc1bd3809abf",
+            measurementId: "G-K6D7DW9JZ3"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const database = firebase.database();
+        const imageContainer = document.getElementById('imageContainer');
+        let currentIndex = 0;
+
+        // Function to remove all existing images
+        function removeAllImages() {
+            imageContainer.innerHTML = '';
+        }
+
+        // Retrieve images from Firebase Database
+        database.ref('announcements').on('value', snapshot => {
+            removeAllImages(); // Remove all existing images
+            snapshot.forEach(childSnapshot => {
+                const childData = childSnapshot.val();
+                const imageUrl = childData.imageUrl;
+
+                // Create image element
+                const image = document.createElement('img');
+                image.src = imageUrl;
+                image.alt = 'Image';
+                image.classList.add('image');
+
+                // Create container for image
+                const sectionDiv = document.createElement('div');
+                sectionDiv.classList.add('section');
+                sectionDiv.appendChild(image);
+
+                // Append image container to image container
+                imageContainer.appendChild(sectionDiv);
+            });
+
+            // Start the image slider only if there are images
+            if (snapshot.exists()) {
+                startImageSlider();
+            }
+        });
+
+        // Function to start the image slider
+        function startImageSlider() {
+            const images = document.querySelectorAll('.section');
+            const totalImages = images.length;
+
+            setInterval(() => {
+                images[currentIndex].style.display = 'none';
+                currentIndex = (currentIndex + 1) % totalImages;
+                images[currentIndex].style.display = 'block';
+            }, 3000); // Change image every 3 seconds
+        }
+    </script>
+</body>
+
+</html>

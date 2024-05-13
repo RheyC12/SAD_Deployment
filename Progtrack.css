@@ -1,0 +1,59 @@
+/* Progress Tracking section */
+.progress-tracking {
+    padding: 50px 0;
+    background-color: #007bff; /* Blue background color */
+    color: #fff; /* Text color */
+    display: flex; /* Use flexbox to occupy all available space */
+    justify-content: center; /* Center the container horizontally */
+    align-items: center; /* Center the container vertically */
+}
+
+.progress-tracking .container {
+    width: calc(100% - 40px); /* Occupy all available space minus padding */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.progress-tracking iframe {
+    width: 100%;
+    height: 700px;
+    border: none; /* Remove border */
+    border-radius: 10px; /* Add border radius for a smoother look */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add shadow */
+    animation: fadeIn 1s ease; /* Fade-in animation */
+}
+
+.back-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+  }
+  
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .slide-content {
+        margin: 0 10px;
+    }
+    .swiper-navBtn {
+        display: none;
+    }
+}

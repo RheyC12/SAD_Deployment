@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Automatic Image Slider in HTML CSS | CodingNepal</title>
+      <link rel="stylesheet" href="yrSlider.css">
+   </head>
+   <body>
+      <div class="content">
+         <div class="images">
+            <img src="YR/yr3.jpg">
+            <img src="YR/yr2.jpg">
+            <img src="YR/yor.jpg">
+          
+         </div>
+      </div>
+      <script>
+         var indexValue = 0;
+         function slideShow(){
+           setTimeout(slideShow, 2500);
+           var x;
+           const img = document.querySelectorAll("img");
+           for(x = 0; x < img.length; x++){
+             img[x].style.display = "none";
+           }
+           indexValue++;
+           if(indexValue > img.length){indexValue = 1}
+           img[indexValue -1].style.display = "block";
+         }
+         slideShow();
+      </script>
+   </body>
+</html>

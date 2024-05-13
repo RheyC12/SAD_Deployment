@@ -1,0 +1,63 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags and title -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SK Bolacan Digital Platform</title>
+  <!-- Stylesheet -->
+  <link rel="shortcut icon" type="sklogo" href="Logo.png">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="bckbtn.css" />
+
+  <!-- Unicons CSS -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+   
+  
+  <!-- Swiper CSS -->
+   <link rel="stylesheet" href="swiper-bundle.min.css">
+  
+  <!-- Script -->
+  <script src="script.js" defer></script>
+
+  <!-- Swiper JS -->
+  <script src="swiper-bundle.min.js"></script>
+  <body>
+    
+
+  <div class="back-btn" onclick="window.history.back()">✖</div>
+<!-- Content for Welcomepage -->
+<section class="homepage" id="home">
+    <div class="content">
+        <div class="text">
+            <h1>Welcome to SK Bolacan Official Digital Platform!</h1>
+            <p>Explore our digital oasis, redefining convenience and innovation online.<br>Discover a new way forward.</p>
+        </div>
+        <a href="main.html">GET STARTED</a>
+    </div>
+</section>
+
+<!-- JavaScript code -->
+<script>
+    const images = [
+        'h1.png', // Path to the first image
+        'h2.png', // Path to the second image
+        'Wpage.png'  // Path to the third image
+    ];
+
+    const homepage = document.querySelector('.homepage');
+    let currentIndex = 0;
+
+    // Function to change background image
+    function changeBackground() {
+        homepage.style.backgroundImage = `url(${images[currentIndex]})`;
+        currentIndex = (currentIndex + 1) % images.length;
+    }
+
+    // Change the background image every 5 seconds
+    setInterval(changeBackground, 5000);
+</script>
+</body>
+</html>

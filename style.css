@@ -1,0 +1,605 @@
+/* Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f0faff;
+  margin: 0; 
+}
+
+/* Navigation styling */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background: #0a0731;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+
+.nav .logo {   /*Text SK DIGITAL PLATFORM */
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  white-space: nowrap; 
+ 
+}
+
+.nav .logo img {
+  height: 70px; /* Adjust height of logo image */
+  margin-right: 30px; /* Add some space between logo image and text */
+  margin-left: 10%;
+}
+
+.nav .nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav .nav-links li {
+  margin-right: 50px; /* Adjust spacing between nav items */
+}
+
+.nav .nav-links a {
+  color: #fff; 
+  font-size: 15px; 
+  text-decoration: none; /* Remove underline */
+  transition: all 0.2s linear;
+}
+
+.nav.openSearch .nav-links a {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav .search-icon {
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 2%;
+}
+
+.nav .search-box {
+  position: absolute;
+  right: 60px;       
+  height: 45px;
+  max-width: 200px;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s linear;
+  
+}
+
+.nav.openSearch .search-box {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.search-box .search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  left: 15px;
+  color: #4a98f7;
+  transform: translateY(-50%);
+}
+
+.search-box input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 0 15px 0 45px;
+}
+
+.nav .navOpenBtn,
+.nav .navCloseBtn {
+  display: none;
+}
+
+/* Logo and title container */
+.nav .logoContainer {
+  display: flex;
+  flex-direction: column; /* Arrange the logo and title vertically */
+  align-items: center;
+  margin-bottom: 30px; /* Space between the title and items */
+}
+
+.nav .logoContainer img {
+  max-width: 50%; /* Logo Size */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.nav .logoContainer .navTitle {
+  font-size: 24px; 
+  color: #fff; 
+}
+
+/* responsive */
+@media screen and (max-width: 1160px) {
+  .nav {
+    padding: 15px 100px;
+  }
+  .nav .search-box {
+    right: 150px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .nav {
+    padding: 15px 50px;
+  }
+  .nav .search-box {
+    right: 100px;
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav .navOpenBtn,
+  .nav .navCloseBtn {
+    display: block;
+  }
+  .nav {
+    padding: 15px 20px;
+  }
+  .nav .nav-links {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    max-width: 280px;
+    width: 100%;
+    padding-top: 100px;
+    row-gap: 30px;
+    flex-direction: column;
+    background-color: #0a0731;
+    box-shadow: 0 2px 10px rgba(240, 233, 233, 0.1);
+    transition: all 0.4s ease;
+    z-index: 100;
+  }
+  .nav.openNav .nav-links {
+    left: 0;
+  }
+  .nav .navOpenBtn {
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .nav .navCloseBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .nav .search-box {
+    top: calc(100% + 10px);
+    max-width: calc(100% - 20px);
+    right: 50%;
+    transform: translateX(50%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav .nav-links {
+    /* Other styles... */
+    align-items: center; /* Center items vertically */
+  }
+
+  /* Adjust font size and spacing for smaller screens */
+  .nav .nav-links a {
+    font-size: 20px; /* Adjust font size */
+    margin-left: 40px; /* Adjust spacing */
+  }
+
+}
+
+/* Homepage styling */
+
+.homepage {
+  background-color: #fff; /* Add the path to your background image */
+  background-size: cover; /* Cover the entire background */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+}
+
+
+/* Styles for text inside the homepage */
+.homepage .content {
+  text-align: center; /* Center align the text */
+  color: #fff; /* Change text color */
+}
+
+.homepage h1 {
+  font-size: 36px; /* Adjust font size for the heading */
+  margin-bottom: 20px; /* Add some space below the heading */
+}
+
+.homepage p {
+  font-size: 20px; /* Adjust font size for paragraph */
+  line-height: 1.5; /* Adjust line height for better readability */
+}
+
+
+.homepage .content .text {
+  margin-bottom: 50px;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.content a {
+  color: #000;
+  display: inline-block;
+  font-size: 18px;
+  margin: 0 10px;
+  padding: 10px 30px;
+  border-radius: 5px;
+  background: #fff;
+  border: 2px solid #fff;
+  transition: 0.4s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+}
+
+.content a:hover {
+ color: #fff;
+  background: rgba(255,255,255,0.3); 
+}
+
+/*PROGRAMS*/
+
+.programs {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 100px 0 0;
+}
+
+
+.programs h2 {
+  font-size: 2rem;
+
+}
+
+.programs p {
+  text-align: center;
+}
+
+.programs .cards {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin-top: 50px;
+  padding: 0 10px;
+  justify-content: space-between;
+}
+
+.programs .card {
+  background: #0a0731;
+  padding: 40px 15px;
+  list-style: none;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.04);
+  margin-bottom: 40px;
+  width: calc(100% / 3 - 30px);
+  text-align: center;
+}
+
+.programs .card img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+
+.programs p {
+  color: #fff; /* Set font color to white */
+}
+
+.programs h3 {
+  color: #fff; /* Set font color to white */
+}
+
+.programs h2 + p {
+  color: inherit; /* Inherits color from the preceding h2 element */
+}
+
+.card.clicked {
+  transform: scale(1.50); /* Scale up the card */
+  transition: transform 0.50s ease; /* Add transition for smooth animation */
+}
+
+
+
+
+
+/* Modify the CSS for card text */
+.card h3 {
+  color: #fff; /* Set text color to white */
+  font-weight: normal; /* Set normal font weight */
+  transition: color 0.3s ease; /* Add transition for smooth color change */
+  text-decoration: none; /* Remove underline */
+}
+
+.card p {
+  color: #ccc; /* Set text color to light gray */
+  font-weight: normal; /* Set normal font weight */
+  transition: color 0.3s ease; /* Add transition for smooth color change */
+  text-decoration: none; /* Remove underline */
+} 
+
+.card:hover h3,
+.card:hover p {
+  font-weight: bold; /* Set font weight to bold on hover */
+  color: #fff; /* Set text color to white on hover */
+}
+
+
+
+
+/* Global styles */ 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color:#0a0731; /* Change font color to white */
+  background-color: #efefef ; /* Change background color */
+}
+
+.container {
+  max-width: 1400px; /*width of the content */
+  margin: 0 auto;
+  padding: 30px;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Image container */
+.image-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px; /* Increase margin between image container and description */
+}
+
+.image-container img {
+  max-width: 30%;
+  height: auto;
+}
+
+
+
+/* Remove hover effect */
+.program-description:hover {
+  background-color: transparent;
+}
+
+
+
+
+/* Style for the "Youth Report" section */
+
+.youth-report {
+    /*padding: 40px 20px;  Adjust padding for spacing around the section */
+    text-align: center; /* Center-align the text within the section */
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Arrange items in column direction */
+    align-items: center; /* Center-align the content */
+   padding: 100px 0 0;
+   margin-left: 1%;
+}
+
+/* Style for the heading in the "Youth Report" section */
+.youth-report h2 {
+    font-size: 32px; /* Adjust the font size as needed */
+    margin-bottom: -25px; /* Space below the heading */
+}
+
+
+
+/* Style for the "View More Info" button */
+.view-more-info {
+    display: block;
+    padding: 10px 0; /* Adjust padding as needed */
+    color: #0a0731;; /* Blue text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px; /* Adjust font size as needed */
+    text-align: right; /* Align button to the right side */
+    margin-top: 10px; /* Add top margin for spacing */
+    line-height: 1.5; /* Adjust line height as needed */
+    border: none; /* No border */
+    background-color: transparent; /* Set background color to transparent */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Button hover effect */
+.view-more-info:hover {
+  text-decoration: underline; /* Underline text on hover */
+}
+
+
+/*Portfolio section */
+
+.portfolio {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px 0;
+  position: relative; /* Add position relative */
+  z-index: 1;
+ 
+}
+
+.Port{
+  color: #000;
+}
+
+.slide-container{
+  max-width: 1120px;
+  width: 100%;
+  padding-top: 20px 40px; /* Adjust the top padding to move the card slider closer to the text */
+  
+}
+.slide-content{
+  margin: 0 40px;
+  overflow: hidden;
+  border-radius: 25px;
+  padding-bottom: 50px; /* Add bottom padding to the slide content */
+}
+
+
+.card{
+  border-radius: 25px;
+  background-color: #FFF;
+}
+.image-content,
+.card-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 14px;
+}
+.image-content{
+  position: relative;
+  row-gap: 5px;
+  padding: 25px 0;
+}
+.overlay{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #0a0731;
+  border-radius: 25px 25px 0 25px;
+}
+.overlay::before,
+.overlay::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  height: 40px;
+  width: 40px;
+  background-color: #0a0731;
+}
+.overlay::after{
+  border-radius: 0 25px 0 0;
+  background-color: #FFF;
+}
+.card-image{
+  position: relative;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background: #FFF;
+  padding: 3px;
+}
+.card-image .card-img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #0a0731;
+}
+.name{
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+.description{
+  font-size: 14px;
+  color: #262525;
+  text-align: center;
+}
+.button b {
+  border: none;
+  font-size: 16px;
+  color: #FFF;
+  padding: 8px 16px;
+  background-color: #0a0731;
+  border-radius: 6px;
+  margin: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.button :hover{
+  background: #0a0731;
+}
+
+
+
+
+.swiper-navBtn{
+  color: #0a0731;
+  transition: color 0.3s ease;
+}
+.swiper-navBtn:hover{
+  color: #0a0731;
+}
+.swiper-navBtn::before,
+.swiper-navBtn::after{
+  font-size: 35px;
+}
+.swiper-button-next{
+  right: 0;
+}
+.swiper-button-prev{
+  left: 0;
+}
+
+.swiper-pagination {
+  margin-top: 20px; /* Add margin to create some space between the cards and pagination bullets */
+  
+
+}
+
+
+
+.swiper-pagination-bullet{
+  background-color: #0a0731;
+  opacity: 1;
+}
+.swiper-pagination-bullet-active{
+  background-color: #0a0731;
+}
+@media screen and (max-width: 768px) {
+  .slide-content{
+    margin: 0 10px;
+  }
+  .swiper-navBtn{
+    display: none;
+  }
+}
+

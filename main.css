@@ -1,0 +1,200 @@
+/* Styles for the homepage */
+.home-container {
+    display: flex;
+    max-width: 100%;
+    height: 100vh;
+    margin-top: 8%;
+}
+
+.home-left-side,
+.home-right-side {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto; /* Enable scrollbar if needed */
+}
+
+.home-container .container {
+    padding: 20px;
+}
+
+.home-container .card1 {
+    background: #0a0731;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.04);
+}
+
+.home-container .card1 img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.home-container .card2 {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Display 2 items per row */
+    grid-gap: 20px;
+}
+
+.home-container .card2 li {
+    background: #0a0731;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.04);
+    margin-bottom: 0;
+    padding: 20px;
+}
+
+.home-container .card2 li img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.home-container .header-title,
+.home-container .header-title-right {
+    color: #0a0731;
+    margin-bottom: 10px;
+}
+
+.home-container .card2 li h3,
+.home-container .card2 li p {
+    color: #fff;
+    margin: 0;
+}
+
+.home-card a {
+    text-decoration: none;
+    color: white; /* Inherit the color from its parent */
+ }
+ 
+ .home-card h3,
+ .home-card p {
+     text-decoration: none;
+    
+ }
+
+
+
+
+ /* Program description */
+.program-description {
+    text-align: justify;
+    margin-top: 30px;
+    max-width: 800px; /* Decrease maximum width of description */
+    margin-bottom: 50px; /* Increase margin between description and buttons */
+    margin-left: auto;
+    margin-right: auto;
+    color: #000000;
+  }
+  
+  .programs a {
+    text-decoration: none;
+    color: inherit;
+    margin-top: 10px;
+  }
+  
+  /* Buttons */
+  .button-container {
+    text-align: center;
+    margin-top: 30px; /* Decrease margin between description and buttons */
+  }
+  
+  .button  {
+    display: inline-block;
+    width: auto;
+    padding: 10px 20px; /* Add padding to the button */
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #0a0731;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Style for go back button */
+  #go-back-button {
+    margin-left: auto;
+  }
+
+  .cards_prog{
+    width: 80%;
+    height: auto;
+    margin: 10px;
+    margin-bottom: 10%
+    ;
+
+  }
+
+  
+  .youth-report .view-more-info {
+    display: block;
+    margin-top: 0; /* Adjust margin as needed */
+    background: none;
+    color: #0a0731; /* Change color to desired color */
+    border: none;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Adjust button styling on hover */
+  .youth-report .view-more-info:hover {
+    text-decoration: underline;
+  }
+
+  .cards_prog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjust alignment as needed */
+  }
+  
+  .cards_prog .card {
+    width: calc(33.33% - 20px); /* Adjust width of cards */
+    margin-bottom: 20px;
+  }
+  
+  .card a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .card h3 {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  
+  .card p {
+    margin-top: 5px;
+    font-size: 16px;
+  }
+  
+  
+
+  
+  
+ 
+ 
